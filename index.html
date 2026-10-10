@@ -78,15 +78,13 @@
 
   /* Hero */
   .hero{position:relative;margin-top:-72px;padding-top:72px;overflow:hidden;
-        background:radial-gradient(760px 520px at 50% 64%,var(--hero-glow),transparent 72%),
-                   linear-gradient(180deg,var(--hero-top) 0%,var(--hero-mid) 58%,var(--bg) 100%)}
+        background:var(--bg)}
   .hero-copy{text-align:center;max-width:820px;margin:0 auto;padding:56px 20px 0}
   .pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border-radius:999px;background:var(--surface);color:var(--text);
         font:800 14px/1 var(--font);box-shadow:0 2px 0 var(--sep);border:2px solid var(--sep)}
   .pill:hover{text-decoration:none}
   .pill img{width:26px;height:26px;border-radius:7px}
   .hero h1{font-size:clamp(44px,7.4vw,84px);margin-top:22px}
-  .hero h1 .grad{background:linear-gradient(92deg,var(--grad-a),var(--grad-b));-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero .lead{font-size:clamp(18px,2.2vw,21px);line-height:1.55;color:var(--text-body);max-width:600px;margin:20px auto 32px}
   .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
   .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:22px;font:700 14px/1.3 var(--font);color:var(--text-2)}
@@ -99,7 +97,7 @@
   .float{position:absolute;z-index:4;animation:bob 6s ease-in-out infinite}
   .float.f2{animation-delay:-2s}.float.f3{animation-delay:-4s}
   @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
-  .kit-hero{left:calc(50% - 420px);top:330px;width:190px;z-index:5;filter:drop-shadow(0 18px 18px rgba(8,60,90,.18))}
+  .kit-hero{left:calc(50% - 400px);top:360px;width:200px;z-index:5;filter:drop-shadow(0 18px 18px rgba(8,60,90,.18))}
 
   /* iPhone frame */
   .device{--w:300px;position:relative;width:var(--w);padding:calc(var(--w)*.014);border-radius:calc(var(--w)*.19);
@@ -113,24 +111,45 @@
   .device i.v2{left:calc(var(--w)*-.01);top:37%;height:9%}
   .device i.p{right:calc(var(--w)*-.01);top:29%;height:14%}
 
+  /* The phone screen comes alive: the video plays, a word is tapped, its card slides up (as in the app) */
+  .screen{position:relative;overflow:hidden;border-radius:calc(var(--w)*.145);container-type:inline-size}
+  .screen picture,.screen img.shot{display:block;width:100%;height:auto;border-radius:0}
+  .vid{position:absolute;left:0;top:12.205%;width:100%;height:25.477%;overflow:hidden}
+  .vid img{width:100%;height:100%;border-radius:0;transform-origin:30% 60%;animation:pan 9s ease-in-out infinite}
+  .prog{position:absolute;left:0;top:37.68%;width:100%;height:.31%;background:#7A93B5}
+  .prog i{position:absolute;inset:0 auto 0 0;background:#1CB0F6;animation:prog 9s linear infinite}
+  .tap{position:absolute;left:27.2%;top:54.7%;width:16cqw;height:16cqw;margin:-8cqw 0 0 -8cqw;border-radius:50%;
+       background:radial-gradient(circle,rgba(28,176,246,.45) 0 30%,rgba(28,176,246,.18) 31% 60%,transparent 61%);opacity:0;animation:tap 9s ease-out infinite}
+  .dim{position:absolute;inset:0;background:rgba(19,31,36,.32);opacity:0;animation:dim 9s ease-in-out infinite}
+  .sheet{position:absolute;left:2.5cqw;right:2.5cqw;bottom:3cqw;background:#fff;border-radius:5cqw;box-shadow:0 -2cqw 6cqw rgba(0,0,0,.18);
+         padding:0 4cqw 4.5cqw;transform:translateY(115%);animation:sheet 9s cubic-bezier(.2,.8,.2,1) infinite;color:#3C3C3C;font-family:var(--font)}
+  .sheet .tabs{display:flex;border-bottom:.5cqw solid #E5E5E5;margin:0 -4cqw 4cqw}
+  .sheet .tabs span{flex:1;text-align:center;padding:3.4cqw 0 2.6cqw;font:800 3.4cqw/1 var(--font);color:#AFAFAF}
+  .sheet .tabs span.on{color:#1899D6;box-shadow:inset 0 -.8cqw 0 #1CB0F6}
+  .sheet .top{display:flex;align-items:center;gap:3cqw}
+  .sheet .spk{flex:none;width:11cqw;height:11cqw;border-radius:3cqw;background:#1CB0F6;box-shadow:0 1cqw 0 #1899D6;display:grid;place-items:center}
+  .sheet .spk svg{width:6cqw;height:6cqw}
+  .sheet .py{font:700 3.6cqw/1 var(--font);color:#1899D6}
+  .sheet .hzb{font:600 8.6cqw/1.1 var(--hanzi);color:#3C3C3C}
+  .sheet .learn{margin-left:auto;font:800 3.4cqw/1 var(--font);color:#CE7A00;border:.6cqw solid #FFB020;border-radius:2.6cqw;padding:2.4cqw 3.4cqw;box-shadow:0 .8cqw 0 #FFB020}
+  .sheet .tg{display:flex;gap:1.6cqw;margin-top:3.4cqw}
+  .sheet .tg span{font:800 2.9cqw/1 var(--font);color:#777;background:#F7F7F7;border-radius:2cqw;padding:1.8cqw 2.4cqw}
+  .sheet .mean{margin-top:3cqw;font:700 4cqw/1.3 var(--font)}
+  @keyframes pan{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+  @keyframes prog{0%{width:14%}34%{width:30%}88%{width:30%}100%{width:34%}}
+  @keyframes tap{0%,30%{opacity:0;transform:scale(.4)}33%{opacity:1;transform:scale(1)}40%{opacity:0;transform:scale(1.4)}100%{opacity:0}}
+  @keyframes dim{0%,35%{opacity:0}40%,82%{opacity:1}87%,100%{opacity:0}}
+  @keyframes sheet{0%,35%{transform:translateY(115%)}42%,82%{transform:translateY(0)}88%,100%{transform:translateY(115%)}}
+
   /* App pieces, rebuilt in the design system so they stay sharp */
   .chip{background:var(--surface);border:2px solid var(--sep);border-radius:20px;box-shadow:var(--chip-shadow);color:var(--text)}
-  .wordcard{left:calc(50% + 170px);top:120px;width:270px;padding:16px 18px 18px;rotate:3deg}
-  .wordcard .row{display:flex;align-items:center;gap:12px}
-  .speaker{flex:none;width:48px;height:48px;border-radius:14px;background:var(--blue);box-shadow:0 4px 0 var(--blue-dark);display:grid;place-items:center}
-  .speaker svg{width:24px;height:24px}
-  .wordcard .py{font:700 15px/1 var(--font);color:var(--link)}
-  .wordcard .hzbig{font:600 36px/1.1 var(--hanzi);color:var(--text)}
-  .tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
-  .tag{font:800 12px/1 var(--font);color:var(--text-2);padding:7px 9px;border-radius:9px;border:2px solid var(--sep)}
-  .wordcard .mean{margin-top:10px;font:700 17px/1.3 var(--font);color:var(--text)}
   .score{left:calc(50% - 470px);top:120px;width:250px;padding:16px;rotate:-4deg;background:var(--t-green);border-color:transparent}
   .score .row{display:flex;align-items:center;gap:12px}
   .ring{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:900 18px/1 var(--font);color:var(--t-green-ink);
         background:radial-gradient(closest-side,var(--t-green) 76%,transparent 78% 100%),conic-gradient(var(--green) 95%,rgba(88,204,2,.18) 0)}
   .score b{display:block;font:900 22px/1.1 var(--font);color:var(--t-green-ink)}
   .score small{display:block;font:700 13px/1.35 var(--font);color:var(--t-green-ink);margin-top:3px}
-  .askkit{left:calc(50% + 190px);top:420px;width:290px;padding:14px 16px;rotate:-2deg}
+  .askkit{left:calc(50% + 180px);top:170px;width:300px;padding:14px 16px;rotate:3deg}
   .askkit .q{display:flex;gap:10px;align-items:flex-start}
   .askkit img{width:40px;height:40px;flex:none}
   .askkit p{margin:0;font:700 15px/1.45 var(--font);color:var(--text)}
@@ -164,6 +183,21 @@
   .t-green{--tile-bg:var(--t-green);--tile-ink:var(--t-green-ink)}
   .t-orange{--tile-bg:var(--t-orange);--tile-ink:var(--t-orange-ink)}
 
+  /* Meet Kit */
+  .meet{position:relative;overflow:hidden;border-radius:36px;padding:56px 56px 0;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:end;
+        background:#FFF0DB}
+  .meet .big{width:100%;max-width:340px;justify-self:center;filter:drop-shadow(0 22px 22px rgba(120,60,0,.18))}
+  .meet .copy{padding-bottom:56px}
+  .meet .eyebrow{color:#A55A00}.meet .eyebrow::before{background:#FF9600}
+  .meet h2{font-size:clamp(34px,4.4vw,50px);margin-top:14px}
+  .meet p{font-size:19px;margin:14px 0 0;max-width:520px}
+  .ask{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .ask span{font:800 15px/1 var(--font);color:#3C3C3C;background:#fff;border:2px solid #E5E5E5;border-radius:14px;padding:12px 16px;box-shadow:0 3px 0 #E5E5E5}
+  .poses{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+  .poses div{text-align:center;background:rgba(255,255,255,.7);border-radius:18px;padding:12px 6px 12px}
+  .poses img{width:64px;height:64px;object-fit:contain;margin:0 auto 6px}
+  .poses b{font:800 14px/1.2 var(--font);color:#3C3C3C}
+
   /* Steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .step{position:relative;padding:28px;border-radius:24px;border:2px solid var(--sep);background:var(--surface)}
@@ -172,7 +206,7 @@
   .step p{margin:8px 0 0;font-size:16px}
 
   /* Privacy panel: always dark, a contrast moment */
-  .vault{position:relative;overflow:hidden;border-radius:36px;background:radial-gradient(700px 360px at 85% 0%,rgba(28,176,246,.35),transparent 70%),#131F24;color:#DCE6EC;padding:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .vault{position:relative;overflow:hidden;border-radius:36px;background:#131F24;color:#DCE6EC;padding:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
   .vault h2{color:#F1F7FB;font-size:clamp(32px,4.2vw,48px)}
   .vault .eyebrow{color:#7FD3FA}
   .vault p.lead{font-size:19px;margin:16px 0 0;color:#C5D3DB}
@@ -188,8 +222,8 @@
   /* Pricing */
   .plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:860px;margin:0 auto}
   .plan{position:relative;display:flex;flex-direction:column;background:var(--surface);border:2px solid var(--sep);border-radius:28px;padding:32px}
-  .plan.pro{background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,#1CB0F6,#CE82FF) border-box;border:3px solid transparent;box-shadow:0 40px 80px -40px rgba(28,120,200,.5)}
-  .plan .badge{position:absolute;top:-15px;left:32px;background:linear-gradient(90deg,#1CB0F6,#CE82FF);color:#131F24;font:900 12px/1 var(--font);letter-spacing:.08em;text-transform:uppercase;padding:9px 13px;border-radius:10px}
+  .plan.pro{border:3px solid #1CB0F6;box-shadow:0 6px 0 #1899D6}
+  .plan .badge{position:absolute;top:-15px;left:32px;background:#1CB0F6;color:#131F24;font:900 12px/1 var(--font);letter-spacing:.08em;text-transform:uppercase;padding:9px 13px;border-radius:10px}
   .plan h3{font-size:24px;letter-spacing:-.01em}
   .plan .price{margin-top:14px;font:900 44px/1 var(--font);color:var(--ink);letter-spacing:-.02em}
   .plan .price small{font:700 16px/1 var(--font);color:var(--text-2);letter-spacing:0}
@@ -213,7 +247,7 @@
 
   /* Final call */
   .final{position:relative;overflow:hidden;border-radius:40px;padding:72px 32px 0;text-align:center;
-         background:radial-gradient(600px 300px at 50% 0%,rgba(255,255,255,.55),transparent 70%),linear-gradient(180deg,#49C0F8,#1CB0F6)}
+         background:#1CB0F6}
   .final h2{color:#131F24;font-size:clamp(34px,4.8vw,54px)}
   .final p{margin:14px auto 30px;max-width:520px;font-size:19px;color:#131F24}
   .final img{width:200px;margin:34px auto 0}
@@ -232,24 +266,29 @@
   .js .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
-    .float{animation:none}
+    .float,.vid img,.prog i,.tap,.dim,.sheet{animation:none}
     .js .reveal{opacity:1;transform:none;transition:none}
   }
 
   @media (max-width:1020px){
-    .stage{height:auto;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:40px;padding-bottom:70px}
-    .stage .device{position:relative;left:auto;transform:none;--w:300px}
-    .float{position:relative;left:auto!important;top:auto!important;rotate:0deg;animation:none}
-    .kit-hero{order:1;width:130px;margin-top:-56px;z-index:5}
-    .score,.wordcard,.askkit{width:min(340px,100%)}
-    .score{order:2}.wordcard{order:3}.askkit{order:4}
+    .stage{height:680px}
+    .stage .device{--w:290px}
+    .kit-hero{left:calc(50% - 330px);top:380px;width:150px}
+    .score{left:calc(50% - 370px);top:110px;width:210px;padding:12px}
+    .score b{font-size:19px}
+    .askkit{left:calc(50% + 165px);top:150px;width:230px}
     .stats{margin-top:0;grid-template-columns:repeat(2,1fr)}
-    .vault{grid-template-columns:1fr;padding:44px 32px}
+    .vault,.meet{grid-template-columns:1fr}
+    .vault{padding:44px 32px}
+    .meet{padding:44px 32px 0}.meet .copy{padding-bottom:0}.meet .big{max-width:240px;order:2}
   }
   @media (max-width:820px){
     .nav a.link{display:none}
-    .stage .device{--w:270px}
-    .kit-hero{width:120px;margin-top:-52px}
+    .stage{height:auto;display:flex;justify-content:center;margin-top:36px;padding-bottom:40px}
+    .stage .device{position:relative;left:auto;transform:none;--w:260px}
+    .score,.askkit{display:none}
+    .kit-hero{left:calc(50% - 188px);top:auto;bottom:24px;width:104px;animation:none}
+    .poses{grid-template-columns:repeat(2,1fr)}
     .tile.c7,.tile.c5{grid-column:span 12}
     .tile{min-height:0;padding:28px 24px 0}
     .tile h3{max-width:75%}
@@ -264,6 +303,145 @@
     .stat{padding:16px}
     .stat b{font-size:28px}
   }
+
+  /* ===== v5: Duolingo-style hero (illustration | headline + stacked buttons), flat and short ===== */
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding-top:28px;padding-bottom:88px}
+  .hero-grid .stage{position:relative;height:auto;margin:0;display:flex;justify-content:center;padding-bottom:10px}
+  .hero-grid .stage .device{position:relative;left:auto;top:auto;transform:none;--w:320px}
+  .hero-grid .kit-hero{left:calc(50% - 305px);top:auto;bottom:-14px;width:165px}
+  .hero-copy{text-align:center;max-width:470px;margin:0 auto;padding:0}
+  .hero h1{font-size:clamp(40px,4.6vw,60px);margin:0}
+  .hero h1 .hl{color:#1899D6}
+  .hero .lead{margin:18px auto 30px;max-width:420px}
+  .ctas{flex-direction:column;align-items:stretch;max-width:340px;margin:0 auto;gap:16px}
+  .hero .trust{display:block;margin:20px 0 0;font:700 15px/1.3 var(--font);color:var(--text-2)}
+  .vault{display:block;text-align:center;padding:56px 32px}
+  .vault h2{font-size:clamp(30px,4vw,44px)}
+  .vault ul{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:28px 0 24px}
+  .vault li{display:flex;align-items:center;gap:10px;padding:12px 18px 12px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#F1F7FB;font:800 16px/1.2 var(--font)}
+  .vault li .tick{width:26px;height:26px}.vault li .tick svg{width:14px;height:14px}
+  .vault > a{font:800 16px var(--font);color:#7FD3FA}
+  .meet{padding-top:48px}.meet .copy{padding-bottom:48px}
+  .ask{margin-top:24px}
+  .tile{min-height:500px}
+  .tile p{max-width:calc(100% - 100px)}
+  @media (max-width:1020px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;padding-bottom:56px}
+    .hero-copy{order:-1}
+    .hero-grid .stage .device{--w:290px}
+    .hero-grid .kit-hero{left:calc(50% - 280px);width:140px;bottom:-12px}
+  }
+  @media (max-width:820px){
+    .hero-grid{padding-top:16px}
+    .hero-grid .stage .device{--w:260px}
+    .hero-grid .kit-hero{left:calc(50% - 196px);width:88px;bottom:-6px}
+    .vault li{font-size:15px}
+  }
+
+  /* ---- Stepper with Kit ---- */
+  .how{padding-bottom:40px}
+  .stepper{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .stepper::before{content:"";position:absolute;top:76px;left:17%;right:17%;border-top:4px dashed #E5E5E5}
+  .sp{position:relative;text-align:center}
+  .av{position:relative;width:152px;height:152px;margin:0 auto;border-radius:50%;display:grid;place-items:center;border:6px solid #fff;box-shadow:0 0 0 2px #E5E5E5,0 6px 0 2px #E5E5E5}
+  .av img{width:116px;height:116px;object-fit:contain}
+  .av-blue{background:var(--t-blue)}.av-purple{background:var(--t-purple)}.av-green{background:var(--t-green)}
+  .av .n{position:absolute;top:-6px;right:-2px;width:44px;height:44px;border-radius:14px;background:#1CB0F6;box-shadow:0 4px 0 #1899D6;color:#131F24;display:grid;place-items:center;font:900 20px/1 var(--font)}
+  .sp h3{font-size:24px;margin-top:22px;letter-spacing:-.01em}
+  .sp p{margin:8px auto 0;max-width:260px;font-size:17px}
+  @media (max-width:820px){.stepper{grid-template-columns:1fr;gap:36px}.stepper::before{display:none}}
+  /* ---- Zigzag feature rows (Duolingo homepage pattern) ---- */
+  .zig{display:grid;gap:110px}
+  .zrow{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .zrow:nth-child(even) .art{order:2}
+  .art{position:relative;overflow:hidden;border-radius:36px;background:var(--tile-bg);padding:56px 56px 0;min-height:440px;display:flex;align-items:flex-end;justify-content:center}
+  .art .kit{position:absolute;top:20px;right:22px;width:104px;height:104px;object-fit:contain}
+  .zshot{width:100%;max-width:420px}
+  .zshot.crop{max-height:400px;overflow:hidden}
+  .zshot img{display:block;width:100%;height:auto;border-radius:24px 24px 0 0;box-shadow:0 30px 60px -20px rgba(8,60,90,.35)}
+  .ztxt h2{font-size:clamp(34px,4vw,52px);color:var(--tile-ink)}
+  .zrow:nth-child(1) .ztxt h2{color:var(--t-blue-ink)}.zrow:nth-child(2) .ztxt h2{color:var(--t-purple-ink)}
+  .zrow:nth-child(3) .ztxt h2{color:var(--t-green-ink)}.zrow:nth-child(4) .ztxt h2{color:var(--t-orange-ink)}
+  .ztxt p{font-size:21px;margin:14px 0 0;max-width:420px}
+  @media (max-width:820px){.zig{gap:64px}.zrow{grid-template-columns:1fr;gap:24px}.zrow:nth-child(even) .art{order:0}
+    .art{padding:40px 24px 0;min-height:0;border-radius:28px}.art .kit{width:76px;height:76px}.ztxt{text-align:center}.ztxt p{margin-left:auto;margin-right:auto}}
+
+  /* ===== v7 ===== */
+  .zrow .ask{margin-top:22px}
+  /* pricing like Duolingo Super: flat blue Pro card with Kit */
+  .plans{grid-template-columns:.85fr 1.15fr;align-items:stretch;max-width:900px}
+  .plan.pro{background:#1CB0F6;border:0;box-shadow:0 8px 0 #1899D6;color:#131F24;padding:40px 36px 36px;overflow:visible}
+  .plan.pro h3,.plan.pro .price,.plan.pro .price small,.plan.pro .alt,.plan.pro li{color:#131F24}
+  .plan.pro .price{font-size:58px}
+  .plan.pro li{font-weight:800;font-size:17px}
+  .plan.pro li .tick{background:#fff}
+  .plan .badge{background:#FFC800;color:#131F24;box-shadow:0 3px 0 #E5A100}
+  .pro-kit{position:absolute;right:18px;top:-58px;width:132px;filter:drop-shadow(0 10px 10px rgba(8,60,90,.18))}
+  .plan.pro .btn-white{--btn-shadow:#0F86C2}
+  /* FAQ with Kit */
+  .faq-grid{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;max-width:980px;margin:0 auto}
+  .faq-kit{width:200px;position:sticky;top:110px}
+  .faq-grid .faq{margin:0;max-width:none}
+  /* final banner: text left, big Kit right */
+  .final{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;text-align:left;padding:64px 64px 0;gap:24px}
+  .final-copy{padding-bottom:64px}
+  .final p{margin:14px 0 30px}
+  .final img{width:100%;max-width:300px;margin:0 auto}
+  @media (max-width:820px){
+    .zrow .ask{justify-content:center}
+    .plans{grid-template-columns:1fr;gap:72px}
+    .pro-kit{width:104px;top:-50px}
+    .faq-grid{grid-template-columns:1fr;gap:12px}.faq-kit{position:static;width:120px;margin:0 auto}
+    .final{grid-template-columns:1fr;text-align:center;padding:48px 24px 0}.final-copy{padding-bottom:0}.final p{margin:14px auto 26px}.final img{max-width:200px}
+  }
+
+  /* ===== v8 ===== */
+  /* hero: light-blue circle behind the phone, word bubbles, bigger Kit and headline */
+  .hero-grid{grid-template-columns:1fr 1fr;gap:56px;padding-top:36px;padding-bottom:96px}
+  .hero-grid .stage{min-height:640px;align-items:center}
+  .hero-grid .stage::before{content:"";position:absolute;left:50%;top:50%;width:560px;height:560px;transform:translate(-50%,-50%);border-radius:50%;background:#DDF4FF;z-index:0}
+  .hero-grid .stage .device{z-index:2}
+  .hero-grid .kit-hero{left:calc(50% - 330px);bottom:10px;width:200px;z-index:5}
+  .bub{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 16px 9px;border-radius:18px;
+       font:800 14px/1 var(--font);color:#131F24;box-shadow:0 5px 0 var(--bs);white-space:nowrap}
+  .bub b{font:600 26px/1.15 var(--hanzi);color:#131F24}
+  .b1{--bs:#58A700;background:#58CC02;left:calc(50% - 300px);top:70px;border-bottom-right-radius:6px}
+  .b2{--bs:#E58700;background:#FF9600;left:calc(50% + 175px);top:40px;border-bottom-left-radius:6px}
+  .b3{--bs:#A568CC;background:#CE82FF;left:calc(50% + 200px);top:300px;border-bottom-left-radius:6px}
+  .b4{--bs:#E5A100;background:#FFC800;left:calc(50% + 160px);top:520px;border-top-left-radius:6px}
+  .hero-copy{max-width:540px;text-align:left;margin:0}
+  .hero h1{font-size:clamp(44px,4.6vw,64px);line-height:1.05}
+  .hero .lead{margin:22px 0 32px;font-size:22px;max-width:460px}
+  .ctas{margin:0;max-width:360px}
+  .hero .trust{text-align:left;max-width:360px;text-align:center}
+  /* Pro card and final banner in the light blue of the "Tap any word" panel */
+  .plan.pro{background:#DDF4FF;border:3px solid #1CB0F6;box-shadow:0 6px 0 #1899D6}
+  .plan.pro li .tick{background:#1CB0F6}
+  .final{background:#DDF4FF}
+  @media (max-width:1020px){
+    .hero-grid{grid-template-columns:1fr;gap:28px}
+    .hero-copy{text-align:center;margin:0 auto}.hero .lead{margin:20px auto 30px}.ctas{margin:0 auto}.hero .trust{margin-left:auto;margin-right:auto}
+    .hero-grid .stage{min-height:600px}
+    .hero-grid .stage::before{width:480px;height:480px}
+  }
+  @media (max-width:820px){
+    .hero-grid .stage{min-height:0;padding:36px 0 30px}
+    .hero-grid .stage::before{width:330px;height:330px}
+    .hero-grid .kit-hero{left:calc(50% - 196px);width:96px;bottom:4px}
+    .bub{padding:7px 11px 6px;font-size:11px;border-radius:14px}.bub b{font-size:18px}
+    .b1{left:calc(50% - 190px);top:24px}.b2{left:auto;right:calc(50% - 190px);top:10px}
+    .b3{left:auto;right:calc(50% - 192px);top:46%}.b4{display:none}
+    .hero h1{font-size:40px}.hero .lead{font-size:19px}
+  }
+
+  /* ===== v9: white word bubbles (like the 你好 bubble), no circle, text centred in its column ===== */
+  .hero-grid .stage::before{display:none}
+  .bub{background:#fff!important;border:2px solid #E5E5E5;box-shadow:0 5px 0 #E5E5E5!important;color:#1899D6!important}
+  .bub b{color:#131F24!important}
+  .hero-copy{text-align:center;margin:0 auto;max-width:520px}
+  .hero .lead{margin:22px auto 32px}
+  .ctas{margin:0 auto}
+  .hero .trust{margin:20px auto 0;text-align:center}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -281,156 +459,107 @@
 
 <main>
   <div class="hero">
-    <div class="hero-copy">
-      <a class="pill" href="https://apps.apple.com/app/id6791685993"><img src="assets/icon.png" alt="">Now on the App Store for iPhone</a>
-      <h1>Learn Chinese from <span class="grad">the videos you love.</span></h1>
-      <p class="lead">LinguaFlow turns videos you already have into interactive Mandarin lessons. Tap any word, ask Kit why, and say it out loud.</p>
-      <div class="ctas">
-        <a class="btn btn-green" href="https://apps.apple.com/app/id6791685993">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1.6 1.6 0 0 1 1.6 1.6v8.5l2.6-2.6a1.6 1.6 0 1 1 2.3 2.3l-5.4 5.4a1.6 1.6 0 0 1-2.2 0l-5.4-5.4a1.6 1.6 0 1 1 2.3-2.3l2.6 2.6V4.6A1.6 1.6 0 0 1 12 3Zm-7 16.2h14a1.4 1.4 0 0 1 0 2.8H5a1.4 1.4 0 0 1 0-2.8Z"/></svg>
-          Download free
-        </a>
-        <a class="btn btn-ghost" href="#features">See how it works</a>
-      </div>
-      <div class="trust">
-        <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Free to download</span>
-        <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>7-day Pro trial</span>
-        <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Your videos stay on your iPhone</span>
-      </div>
-    </div>
-
-    <div class="wrap stage">
+    <div class="wrap hero-grid">
+      <div class="stage">
+        <span class="bub b1 float" aria-hidden="true"><b>你好</b>nǐ hǎo</span>
+        <span class="bub b2 float f2" aria-hidden="true"><b>谢谢</b>xiè xie</span>
+        <span class="bub b3 float f3" aria-hidden="true"><b>加油</b>jiā yóu</span>
+        <span class="bub b4 float f2" aria-hidden="true"><b>好吃</b>hǎo chī</span>
       <img class="float kit-hero f2" src="assets/kit/pose-wave.svg" alt="Kit, the LinguaFlow red panda, waving">
 
-      <div class="float chip score" role="img" aria-label="Pronunciation score: 95, Excellent">
-        <div class="row">
-          <div class="ring">95</div>
-          <div><b>Excellent!</b><small>Sounds natural. Keep that rhythm!</small></div>
-        </div>
-      </div>
 
       <div class="device"><i class="a"></i><i class="v1"></i><i class="v2"></i><i class="p"></i>
         <div class="bezel">
-          <picture>
-            <img src="assets/shots/hero.webp" alt="A video of a fruit stall playing in LinguaFlow. Under it, the subtitle 这个苹果多少钱 with pinyin over each word and the translation How much is this apple?" width="1206" height="2622">
-          </picture>
+          <div class="screen">
+            <img class="shot" src="assets/shots/hero.webp" alt="A video of a fruit stall playing in LinguaFlow. Under it, the subtitle 这个苹果多少钱 with pinyin over each word and the translation How much is this apple?" width="1206" height="2622">
+            <div class="vid" aria-hidden="true"><img src="assets/market.svg" alt=""></div>
+            <div class="prog" aria-hidden="true"><i></i></div>
+            <span class="tap" aria-hidden="true"></span>
+            <div class="dim" aria-hidden="true"></div>
+            <div class="sheet" aria-hidden="true">
+              <div class="tabs"><span class="on">Meaning</span><span>Examples</span><span>✦ Explain</span></div>
+              <div class="top">
+                <div class="spk"><svg viewBox="0 0 24 24"><path fill="#fff" d="M11 5.2v13.6a1 1 0 0 1-1.6.8L5.6 16H3.5A1.5 1.5 0 0 1 2 14.5v-5A1.5 1.5 0 0 1 3.5 8h2.1l3.8-3.6a1 1 0 0 1 1.6.8Z"/><path d="M15 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div>
+                <div><div class="py">píng guǒ</div><div class="hzb">苹果</div></div>
+                <span class="learn">Learn</span>
+              </div>
+              <div class="tg"><span>noun</span><span>HSK 1</span><span>Common</span></div>
+              <div class="mean">1. apple</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="float chip wordcard f3" role="img" aria-label="Word card: 苹果, píng guǒ, noun, HSK 1, apple">
-        <div class="row">
-          <div class="speaker"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M11 5.2v13.6a1 1 0 0 1-1.6.8L5.6 16H3.5A1.5 1.5 0 0 1 2 14.5v-5A1.5 1.5 0 0 1 3.5 8h2.1l3.8-3.6a1 1 0 0 1 1.6.8Z"/><path d="M15 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div>
-          <div><div class="py">píng guǒ</div><div class="hzbig">苹果</div></div>
-        </div>
-        <div class="tags"><span class="tag">noun</span><span class="tag">HSK 1</span><span class="tag">Common</span></div>
-        <div class="mean">apple</div>
       </div>
-
-      <div class="float chip askkit f2">
-        <div class="q">
-          <img src="assets/kit/pose-think.svg" alt="">
-          <p><span class="hz">多少钱</span> means "how much money". Put it after the thing you're buying.</p>
-        </div>
+    <div class="hero-copy">
+      <h1>Learn Chinese from <span class="hl">the videos you love.</span></h1>
+      <p class="lead">Turn any video on your iPhone into a Mandarin lesson.</p>
+      <div class="ctas">
+        <a class="btn btn-green" href="https://apps.apple.com/app/id6791685993">Download free</a>
+        <a class="btn btn-ghost" href="#features">See how it works</a>
       </div>
+      <p class="trust">Free on iPhone · 7-day Pro trial</p>
+    </div>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="stats">
-      <div class="stat reveal"><b>13</b><span>languages to translate into</span></div>
-      <div class="stat reveal"><b>0</b><span>videos uploaded, ever</span></div>
-      <div class="stat reveal"><b>Offline</b><span>dictionary built in</span></div>
-      <div class="stat reveal"><b>On-device</b><span>transcription and translation</span></div>
-    </div>
-  </div>
 
-  <section id="features">
+  <section id="how" class="how">
     <div class="wrap">
-      <div class="head reveal">
-        <span class="eyebrow">Features</span>
-        <h2>Any video becomes a lesson</h2>
-        <p>Everything you need to understand what you watch, in one place.</p>
-      </div>
-
-      <div class="bento">
-        <article class="tile c7 t-blue reveal">
-          <img class="kit" src="assets/kit/pose-point.svg" alt="">
-          <span class="label">Look up</span>
-          <h3>Tap any word</h3>
-          <p>Subtitles come with pinyin. Tap a word like <span class="hz">苹果</span> to see its meaning, HSK level and how common it is.</p>
-          <div class="shot">
-            <picture>
-              <img src="assets/shots/word-close.webp" alt="The word card for 苹果: píng guǒ, noun, HSK 1, apple." loading="lazy" width="804" height="702">
-            </picture>
-          </div>
-        </article>
-
-        <article class="tile c5 t-purple reveal">
-          <img class="kit" src="assets/kit/pose-think.svg" alt="">
-          <span class="label">Understand</span>
-          <h3>Ask Kit why</h3>
-          <p>Kit explains the meaning, grammar and usage of any sentence, word by word.</p>
-          <div class="shot crop">
-            <picture>
-              <img src="assets/shots/explain-close.webp" alt="Kit explaining 这个苹果多少钱, How much is this apple, word by word." loading="lazy" width="804" height="782">
-            </picture>
-          </div>
-        </article>
-
-        <article class="tile c5 t-green reveal">
-          <img class="kit" src="assets/kit/pose-listen.svg" alt="">
-          <span class="label">Speak</span>
-          <h3>Say it out loud</h3>
-          <p>Practice any line. LinguaFlow scores your pronunciation and coaches the tones you missed.</p>
-          <div class="shot">
-            <picture>
-              <img src="assets/shots/sayit-close.webp" alt="Say this sentence: a score of 95, Excellent, sounds natural." loading="lazy" width="804" height="675">
-            </picture>
-          </div>
-        </article>
-
-        <article class="tile c7 t-orange reveal">
-          <img class="kit" src="assets/kit/pose-read.svg" alt="">
-          <span class="label">Remember</span>
-          <h3>Review what you learn</h3>
-          <p>Save words and sentences as you watch. Review brings them back at the right time, with the scene from your own video.</p>
-          <div class="shot crop">
-            <picture>
-              <img src="assets/shots/review-close.webp" alt="A review question: What does 火锅 mean here? The answer hot pot is correct." loading="lazy" width="804" height="1066">
-            </picture>
-          </div>
-        </article>
+      <div class="head reveal"><h2>Three steps to your first lesson</h2></div>
+      <div class="stepper">
+        <div class="sp reveal"><div class="av av-blue"><img src="assets/kit/pose-clip.svg" alt=""><span class="n">1</span></div><h3>Pick a video</h3><p>Any MP4, MOV or M4V from Photos or Files.</p></div>
+        <div class="sp reveal"><div class="av av-purple"><img src="assets/kit/pose-listen.svg" alt=""><span class="n">2</span></div><h3>Get subtitles</h3><p>Pinyin and translation, made on your iPhone.</p></div>
+        <div class="sp reveal"><div class="av av-green"><img src="assets/kit/pose-cheer.svg" alt=""><span class="n">3</span></div><h3>Watch and learn</h3><p>Tap, ask, speak and save as you watch.</p></div>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section id="features" style="padding-top:40px">
     <div class="wrap">
-      <div class="head reveal">
-        <span class="eyebrow">How it works</span>
-        <h2>Three steps to your first lesson</h2>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><div class="n">1</div><h3>Pick a video</h3><p>Choose an MP4, MOV or M4V from your Photos or Files. A show, a vlog, a clip a friend sent.</p></div>
-        <div class="step reveal"><div class="n">2</div><h3>LinguaFlow prepares it</h3><p>It transcribes and translates the audio on your iPhone. Keep the app open while it works.</p></div>
-        <div class="step reveal"><div class="n">3</div><h3>Watch and learn</h3><p>Tap words, ask Kit, practice lines and save what you want to remember.</p></div>
+      <div class="zig">
+        <div class="zrow reveal">
+          <div class="art t-blue">
+            <img class="kit" src="assets/kit/pose-point.svg" alt="">
+            <div class="zshot"><img src="assets/shots/word-close.webp" alt="The word card for 苹果: píng guǒ, noun, HSK 1, apple." loading="lazy" width="804" height="702"></div>
+          </div>
+          <div class="ztxt"><h2>Tap any word</h2><p>Pinyin, meaning and HSK level in one tap.</p></div>
+        </div>
+        <div class="zrow reveal">
+          <div class="art t-purple">
+            <img class="kit" src="assets/kit/pose-think.svg" alt="">
+            <div class="zshot crop"><img src="assets/shots/explain-close.webp" alt="Kit explaining 这个苹果多少钱, How much is this apple, word by word." loading="lazy" width="804" height="782"></div>
+          </div>
+          <div class="ztxt"><h2>Ask Kit why</h2><p>Grammar and usage, explained word by word. Still unsure? Just ask.</p><div class="ask"><span>Say it slower</span><span>Is it polite?</span><span>Another way to say it</span></div></div>
+        </div>
+        <div class="zrow reveal">
+          <div class="art t-green">
+            <img class="kit" src="assets/kit/pose-listen.svg" alt="">
+            <div class="zshot"><img src="assets/shots/sayit-close.webp" alt="Say this sentence: a score of 95, Excellent, sounds natural." loading="lazy" width="804" height="675"></div>
+          </div>
+          <div class="ztxt"><h2>Say it out loud</h2><p>Get a score and tips on your tones.</p></div>
+        </div>
+        <div class="zrow reveal">
+          <div class="art t-orange">
+            <img class="kit" src="assets/kit/pose-read.svg" alt="">
+            <div class="zshot crop"><img src="assets/shots/review-close.webp" alt="A review question: What does 火锅 mean here? The answer hot pot is correct." loading="lazy" width="804" height="1066"></div>
+          </div>
+          <div class="ztxt"><h2>Review what you learn</h2><p>Saved words come back with their scene.</p></div>
+        </div>
       </div>
     </div>
   </section>
+
 
   <section id="privacy" style="padding-top:0">
     <div class="wrap">
       <div class="vault reveal">
-        <div>
-          <span class="eyebrow">Private by design</span>
-          <h2 style="margin-top:14px">Your videos stay on your iPhone</h2>
-          <p class="lead">LinguaFlow does the heavy lifting on your device. Read the full <a href="https://suryapradipta.github.io/linguaflow-privacy/">privacy policy</a>.</p>
-        </div>
+        <h2>Your videos stay on your iPhone</h2>
         <ul>
-          <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#131F24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Never uploaded</b><span>Videos, audio and transcripts stay on your device, unless you allow Apple's server speech recognition.</span></div></li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#131F24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>One sentence at a time</b><span>Only when you tap an AI feature is that one sentence sent to our server, as text. Never audio.</span></div></li>
-          <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#131F24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Works offline</b><span>The dictionary is built in, so looking up words needs no connection.</span></div></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#131F24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Processed on your iPhone</li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#131F24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Only one sentence sent, as text</li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#131F24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dictionary works offline</li>
         </ul>
+        <a href="https://suryapradipta.github.io/linguaflow-privacy/">How we handle your data →</a>
       </div>
     </div>
   </section>
@@ -438,9 +567,8 @@
   <section id="pricing" style="padding-top:0">
     <div class="wrap">
       <div class="head reveal">
-        <span class="eyebrow">Pricing</span>
         <h2>Free to start</h2>
-        <p>Everything you need to learn is free. Pro removes the limits.</p>
+        <p>Pro removes the limits.</p>
       </div>
       <div class="plans">
         <div class="plan reveal">
@@ -449,19 +577,20 @@
           <div class="alt">No card needed</div>
           <ul>
             <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3 videos in your library</li>
-            <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 AI uses a day: explanations, follow-ups and pronunciation feedback</li>
-            <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Player, dictionary, saved words and review, unlimited</li>
+            <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 AI uses a day</li>
+            <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dictionary and review, unlimited</li>
           </ul>
           <a class="btn btn-ghost" href="https://apps.apple.com/app/id6791685993">Download free</a>
         </div>
         <div class="plan pro reveal">
+          <img class="pro-kit" src="assets/kit/pose-cheer.svg" alt="">
           <span class="badge">Yearly: 7-day free trial</span>
           <h3>LinguaFlow Pro</h3>
           <div class="price">$29.99 <small>/ year</small></div>
           <div class="alt">or $4.99 a month</div>
           <ul>
             <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited videos</li>
-            <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited AI explanations and feedback</li>
+            <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited AI</li>
             <li><span class="tick"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Everything in Free</li>
           </ul>
           <a class="btn btn-green" href="https://apps.apple.com/app/id6791685993">Start free trial</a>
@@ -474,9 +603,10 @@
   <section id="faq" style="padding-top:0">
     <div class="wrap">
       <div class="head reveal">
-        <span class="eyebrow">Questions</span>
         <h2>Good to know</h2>
       </div>
+      <div class="faq-grid">
+        <img class="faq-kit" src="assets/kit/pose-think.svg" alt="">
       <div class="faq reveal">
         <details>
           <summary>Which videos can I use?</summary>
@@ -499,17 +629,17 @@
           <p>Pro is billed by Apple. Cancel any time in your iPhone's Settings, under your name, then Subscriptions.</p>
         </details>
       </div>
+      </div>
     </div>
   </section>
 
   <div class="wrap">
     <div class="final reveal">
-      <h2>Start with a video you love</h2>
-      <p>Download LinguaFlow and turn your first video into a lesson in minutes.</p>
-      <a class="btn btn-white" href="https://apps.apple.com/app/id6791685993">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a1.6 1.6 0 0 1 1.6 1.6v8.5l2.6-2.6a1.6 1.6 0 1 1 2.3 2.3l-5.4 5.4a1.6 1.6 0 0 1-2.2 0l-5.4-5.4a1.6 1.6 0 1 1 2.3-2.3l2.6 2.6V4.6A1.6 1.6 0 0 1 12 3Zm-7 16.2h14a1.4 1.4 0 0 1 0 2.8H5a1.4 1.4 0 0 1 0-2.8Z"/></svg>
-        Download on the App Store
-      </a>
+      <div class="final-copy">
+        <h2>Start with a video you love</h2>
+        <p>Your first lesson is minutes away.</p>
+        <a class="btn btn-green" href="https://apps.apple.com/app/id6791685993">Download free</a>
+      </div>
       <img src="assets/kit/pose-cheer.svg" alt="Kit cheering">
     </div>
   </div>
@@ -524,6 +654,7 @@
     <nav>
       <a href="https://apps.apple.com/app/id6791685993">App Store</a>
       <a href="https://suryapradipta.github.io/linguaflow-privacy/">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
       <a href="mailto:hello@uselinguaflow.com">hello@uselinguaflow.com</a>
     </nav>
   </div>

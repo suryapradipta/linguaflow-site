@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1206 668" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FD6FF"/><stop offset="1" stop-color="#DDF4FF"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98A52"/><stop offset="1" stop-color="#9C6334"/></linearGradient>
+    <radialGradient id="apple" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FF7A6B"/><stop offset=".55" stop-color="#E5352B"/><stop offset="1" stop-color="#B71E1A"/></radialGradient>
+    <radialGradient id="pear" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#E6F59A"/><stop offset=".6" stop-color="#B9D94A"/><stop offset="1" stop-color="#8DB22C"/></radialGradient>
+    <g id="a"><circle r="46" fill="url(#apple)"/><path d="M0-44 q4-22 16-30" stroke="#6B3E1F" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M8-58 q26-16 40 2 q-24 12 -40 -2z" fill="#58CC02"/><ellipse cx="-16" cy="-16" rx="11" ry="7" fill="#fff" opacity=".45" transform="rotate(-30 -16 -16)"/></g>
+    <g id="p"><circle r="44" fill="url(#pear)"/><path d="M0-42 q2-18 10-26" stroke="#6B3E1F" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="-15" cy="-15" rx="10" ry="6" fill="#fff" opacity=".5" transform="rotate(-30 -15 -15)"/></g>
+  </defs>
+  <rect width="1206" height="668" fill="url(#sky)"/>
+  <!-- far buildings -->
+  <g fill="#B9DDF2"><rect x="40" y="170" width="170" height="260" rx="10"/><rect x="250" y="120" width="140" height="310" rx="10"/><rect x="820" y="140" width="160" height="290" rx="10"/><rect x="1010" y="190" width="170" height="240" rx="10"/></g>
+  <g fill="#D4ECF8"><rect x="70" y="200" width="30" height="34" rx="4"/><rect x="130" y="200" width="30" height="34" rx="4"/><rect x="70" y="260" width="30" height="34" rx="4"/><rect x="130" y="260" width="30" height="34" rx="4"/><rect x="280" y="160" width="30" height="34" rx="4"/><rect x="330" y="160" width="30" height="34" rx="4"/><rect x="280" y="220" width="30" height="34" rx="4"/><rect x="850" y="180" width="30" height="34" rx="4"/><rect x="910" y="180" width="30" height="34" rx="4"/><rect x="1040" y="230" width="30" height="34" rx="4"/><rect x="1100" y="230" width="30" height="34" rx="4"/></g>
+  <!-- awning -->
+  <g>
+    <rect x="0" y="0" width="1206" height="120" fill="#EE5555"/>
+    <g fill="#FFFFFF"><rect x="100" y="0" width="100" height="120"/><rect x="300" y="0" width="100" height="120"/><rect x="500" y="0" width="100" height="120"/><rect x="700" y="0" width="100" height="120"/><rect x="900" y="0" width="100" height="120"/><rect x="1100" y="0" width="106" height="120"/></g>
+    <g>
+      <path d="M0 120 a50 50 0 0 0 100 0z" fill="#EE5555"/><path d="M100 120 a50 50 0 0 0 100 0z" fill="#FFFFFF"/>
+      <path d="M200 120 a50 50 0 0 0 100 0z" fill="#EE5555"/><path d="M300 120 a50 50 0 0 0 100 0z" fill="#FFFFFF"/>
+      <path d="M400 120 a50 50 0 0 0 100 0z" fill="#EE5555"/><path d="M500 120 a50 50 0 0 0 100 0z" fill="#FFFFFF"/>
+      <path d="M600 120 a50 50 0 0 0 100 0z" fill="#EE5555"/><path d="M700 120 a50 50 0 0 0 100 0z" fill="#FFFFFF"/>
+      <path d="M800 120 a50 50 0 0 0 100 0z" fill="#EE5555"/><path d="M900 120 a50 50 0 0 0 100 0z" fill="#FFFFFF"/>
+      <path d="M1000 120 a50 50 0 0 0 100 0z" fill="#EE5555"/><path d="M1100 120 a50 50 0 0 0 106 0z" fill="#FFFFFF"/>
+    </g>
+    <rect x="0" y="0" width="1206" height="14" fill="#D33131"/>
+  </g>
+  <!-- poles -->
+  <rect x="34" y="120" width="22" height="420" fill="#8A5A2E"/><rect x="1150" y="120" width="22" height="420" fill="#8A5A2E"/>
+  <!-- counter -->
+  <rect x="0" y="470" width="1206" height="198" fill="url(#wood)"/>
+  <rect x="0" y="462" width="1206" height="22" rx="4" fill="#DDA06A"/>
+  <g stroke="#8A5A2E" stroke-width="4" opacity=".45"><line x1="0" y1="540" x2="1206" y2="540"/><line x1="0" y1="604" x2="1206" y2="604"/></g>
+  <!-- crate left: apples -->
+  <g transform="translate(150 300)">
+    <use href="#a" x="60" y="70"/><use href="#a" x="150" y="62"/><use href="#a" x="240" y="72"/><use href="#a" x="330" y="64"/>
+    <use href="#a" x="105" y="2"/><use href="#a" x="195" y="-6"/><use href="#a" x="285" y="4"/>
+    <use href="#a" x="150" y="-62"/><use href="#a" x="240" y="-58"/>
+    <rect x="0" y="92" width="390" height="90" rx="10" fill="#B87A44"/><rect x="0" y="92" width="390" height="16" rx="6" fill="#D39A63"/>
+    <g stroke="#8A5A2E" stroke-width="4" opacity=".5"><line x1="10" y1="136" x2="380" y2="136"/></g>
+  </g>
+  <!-- crate right: pears -->
+  <g transform="translate(680 330)">
+    <use href="#p" x="60" y="44"/><use href="#p" x="148" y="38"/><use href="#p" x="236" y="46"/><use href="#p" x="104" y="-22"/><use href="#p" x="192" y="-26"/>
+    <rect x="0" y="62" width="300" height="90" rx="10" fill="#B87A44"/><rect x="0" y="62" width="300" height="16" rx="6" fill="#D39A63"/>
+  </g>
+  <!-- price sign -->
+  <g transform="translate(560 190) rotate(-4)">
+    <rect x="44" y="120" width="12" height="170" fill="#8A5A2E"/>
+    <rect x="-40" y="0" width="190" height="140" rx="18" fill="#FFFFFF" stroke="#3C3C3C" stroke-width="6"/>
+    <text x="55" y="58" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-weight="700" font-size="44" fill="#3C3C3C">苹果</text>
+    <text x="55" y="116" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-weight="800" font-size="46" fill="#D33131">¥5/斤</text>
+  </g>
+</svg>
